@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE deployer SYSTEM "deployer.dtd">
+
+<deployer>
+
+  <name></name>
+  <manager>
+    <port></port>
+    <auth-key></auth-key>
+  </manager>
+  <logger>
+    <level></level>
+  </logger>
+
+</deployer>

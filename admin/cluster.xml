@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE cluster SYSTEM "cluster.dtd">
+
+<cluster>
+  <name>Cluster Manager</name>
+  <allow-hosts>127.0.0.1</allow-hosts>
+  <manager>
+    <port>9000</port>
+    <auth-key>1234567890</auth-key>
+  </manager>
+  <web-inf-storage>\tmp\cluster</web-inf-storage>
+  <logger>
+    <level>DEBUG</level>
+  </logger>
+  <access-config>../admin/security.xml</access-config>
+  <component>
+    <name>second</name>
+    <type>container</type>
+    <host-name>localhost</host-name>
+    <port>9202</port>
+  </component>
+  <component>
+    <name>first distr</name>
+    <type>distributor</type>
+    <host-name>localhost</host-name>
+    <port>9101</port>
+  </component>
+  <component>
+    <name>first</name>
+    <type>container</type>
+    <host-name>localhost</host-name>
+    <port>9201</port>
+  </component>
+  <host>
+    <id>*</id>
+    <doc-base>z:\jerry\webapps</doc-base>
+    <context>
+      <url>/jazz</url>
+      <protocol>http</protocol>
+      <is-running>true</is-running>
+      <container>second</container>
+      <container>first</container>
+      <location>/jazz</location>
+    </context>
+    <context>
+      <url>/</url>
+      <protocol>http</protocol>
+      <is-running>true</is-running>
+      <container>second</container>
+      <container>first</container>
+      <location>/jtest</location>
+    </context>
+  </host>
+</cluster>

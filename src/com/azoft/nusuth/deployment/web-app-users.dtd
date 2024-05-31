@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!ELEMENT web-app-users (keystore-password?, user+, role+)>
+<!ELEMENT user (name, password?, certificate-name*)>
+<!ELEMENT role (name, member*)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT password (#PCDATA)>
+<!ELEMENT certificate-name (#PCDATA)>
+<!ELEMENT member (#PCDATA)>
+<!ELEMENT keystore-password (#PCDATA)>

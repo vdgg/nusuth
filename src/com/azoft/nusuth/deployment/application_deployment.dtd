@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  application-deployment is the root element -->
+<!ELEMENT application-deployment (host*)>					<!ATTLIST application-deployment	id ID #IMPLIED>
+  <!ELEMENT host (id, doc-base, context*)>					<!ATTLIST host				id ID #IMPLIED>
+    <!ELEMENT id (#PCDATA)>							<!ATTLIST id				id ID #IMPLIED>
+    <!ELEMENT doc-base (#PCDATA)>                                               <!ATTLIST doc-base			id ID #IMPLIED>
+    <!ELEMENT context (url, protocol?, is-running, container*, location)>	<!ATTLIST context			id ID #IMPLIED>
+      <!ELEMENT url (#PCDATA)>							<!ATTLIST url				id ID #IMPLIED>
+      <!ELEMENT protocol (#PCDATA)>						<!ATTLIST protocol			id ID #IMPLIED>
+      <!ELEMENT is-running (#PCDATA)>						<!ATTLIST is-running			id ID #IMPLIED>
+      <!ELEMENT container (#PCDATA)>						<!ATTLIST container			id ID #IMPLIED>
+      <!ELEMENT location (#PCDATA)>						<!ATTLIST location			id ID #IMPLIED>

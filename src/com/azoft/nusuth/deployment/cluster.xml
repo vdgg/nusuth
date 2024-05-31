@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE cluster SYSTEM "cluster.dtd">
+<cluster>
+
+  <name></name>
+  <allow-hosts></allow-hosts>
+
+  <manager>
+    <port></port>
+    <auth-key></auth-key>
+  </manager>
+
+  <web-inf-storage></web-inf-storage>
+  <logger>
+    <level></level>
+  </logger>
+  <access-config></access-config>
+
+</cluster>

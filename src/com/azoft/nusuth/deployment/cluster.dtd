@@ -1,0 +1,95 @@
+<!ELEMENT cluster (name, allow-hosts, manager, web-inf-storage, logger, access-config, component*, host*)>
+<!ELEMENT name (#PCDATA)>
+<!-- comma-separated list -->
+<!ELEMENT allow-hosts (#PCDATA)>
+<!ELEMENT manager (port, auth-key, user-name, password)>
+<!ELEMENT web-inf-storage (#PCDATA)>
+<!ELEMENT access-config (#PCDATA)>
+<!-- defines component section -->
+<!ELEMENT component (name, type, host-name, port)>
+<!-- may be "container", "deployer" or "distributor" -->
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT host-name (#PCDATA)>
+<!-- integer value -->
+<!ELEMENT port (#PCDATA)>
+<!-- defines logging settings -->
+<!ELEMENT logger (level, location?, config?)>
+<!-- specifies logging level. There are four levels are available:
+    DEBUG, INFO, WARN and ERROR -->
+<!ELEMENT level (#PCDATA)>
+<!-- specifies directory where log files located -->
+<!ELEMENT location (#PCDATA)>
+<!-- Specifies alternative config file location for logging system.
+    We are using log4j logging component. Please refer to www.log4j.org for
+    more information -->
+<!ELEMENT config (#PCDATA)>
+<!ELEMENT host (id, doc-base, context*)>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT doc-base (#PCDATA)>
+<!ELEMENT context (url, protocol, is-running, container*, location)>
+<!ELEMENT url (#PCDATA)>
+<!ELEMENT protocol (#PCDATA)>
+<!ELEMENT is-running (#PCDATA)>
+<!ELEMENT container (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT hash-password (#PCDATA)>
+<!ATTLIST name
+	id ID #IMPLIED
+>
+<!ATTLIST allow-hosts
+	id ID #IMPLIED
+>
+<!ATTLIST web-inf-storage
+	id ID #IMPLIED
+>
+<!ATTLIST manager
+	id ID #IMPLIED
+>
+<!ATTLIST access-config
+	id ID #IMPLIED
+>
+<!ATTLIST component
+	id ID #IMPLIED
+>
+<!ATTLIST type
+	id ID #IMPLIED
+>
+<!ATTLIST host-name
+	id ID #IMPLIED
+>
+<!ATTLIST port
+	id ID #IMPLIED
+>
+<!ATTLIST logger
+	id ID #IMPLIED
+>
+<!ATTLIST level
+	id ID #IMPLIED
+>
+<!ATTLIST location
+	id ID #IMPLIED
+>
+<!ATTLIST config
+	id ID #IMPLIED
+>
+<!ATTLIST host
+	id ID #IMPLIED
+>
+<!ATTLIST id
+	id ID #IMPLIED
+>
+<!ATTLIST context
+	id ID #IMPLIED
+>
+<!ATTLIST url
+	id ID #IMPLIED
+>
+<!ATTLIST protocol
+	id ID #IMPLIED
+>
+<!ATTLIST is-running
+	id ID #IMPLIED
+>
+<!ATTLIST container
+	id ID #IMPLIED
+>

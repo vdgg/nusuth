@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app-users SYSTEM "web-app-users.dtd">
+
+<web-app-users>
+
+  <user>
+    <name></name>
+    <password></password>
+  </user>
+
+  <role>
+    <name></name>
+  </role>
+
+</web-app-users>

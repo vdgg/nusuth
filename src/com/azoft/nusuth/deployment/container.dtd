@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  container is the root element -->
+<!ELEMENT container (name?, tcp-server, ssl-server?, admin-config?, standalone,
+                     protocol-adapter?, admin-ip?, jsp?, work-dir?, logger,
+                     default-web-config?, manager?, 
+                     war-repository?, deploy-list?, host*)>
+
+<!-- name uses in cluster for identification of container, so it MUST be
+     specified when standalone parameter set to false and MUST be unique in
+     cluster nodes.
+     Also used in jdbc-link element to specify name of connection -->
+<!ELEMENT name (#PCDATA)>
+
+<!-- specifies configuration of tcp-server -->
+<!ELEMENT tcp-server (port, queue, min-handlers, max-handlers, max-keepalives,
+                      so-timeout, handler-timeout, allow-hosts?, deny-hosts?)>
+
+<!ELEMENT admin-config (admin-server, admin-context-location)>
+
+<!-- specifies configuration of tcp-server -->
+<!ELEMENT admin-server (port, queue, min-handlers, max-handlers, max-keepalives,
+                        so-timeout, handler-timeout, allow-hosts?, deny-hosts?)>
+
+<!ELEMENT admin-context-location (#PCDATA)>
+
+<!-- specifies tcp-server port -->
+<!ELEMENT port (#PCDATA)>
+
+<!-- positive integer that specifies the length of waiting sockets queue -->
+<!ELEMENT queue (#PCDATA)>
+
+<!-- positive integer that specifies the minimum number of threads for
+     client requests processing -->
+<!ELEMENT min-handlers (#PCDATA)>
+
+<!-- positive integer that specifies the maximum number of threads for
+     client requests processing -->
+<!ELEMENT max-handlers (#PCDATA)>
+
+<!-- positive integer that specifies the maximum of keep-alive requests
+     server can accept -->
+<!ELEMENT max-keepalives (#PCDATA)>
+
+<!-- positive integer that specifies socket timeout -->
+<!ELEMENT so-timeout (#PCDATA)>
+
+<!-- positive integer that specifies the time to live for handlers
+     which number exceed min-handlers -->
+<!ELEMENT handler-timeout (#PCDATA)>
+
+<!-- allow-hosts is the comma delimited list of ips that can request container.
+     By default all hosts allowed -->
+<!ELEMENT allow-hosts (#PCDATA)>
+
+<!-- deny-hosts is the comma delimited list of ips that cannot request
+     container. By default no hosts denied -->
+<!ELEMENT deny-hosts (#PCDATA)>
+
+<!-- specifies configuration of ssl-server. Most parameters are the same as in
+     tcp-server -->
+<!ELEMENT ssl-server (port, queue, min-handlers, max-handlers, max-keepalives,
+                      so-timeout, handler-timeout, allow-hosts?, deny-hosts?,
+                      keystore,  trustedstore?)>
+
+<!-- specifies keystore settings where security keys located -->
+<!ELEMENT keystore (location, password)>
+
+<!-- specifies keystore password.
+     Also used in jdbc-link to specify password of SQL server user -->
+<!ELEMENT password (#PCDATA)>
+
+<!-- Specifies location and password of Trusted Certificates Store -->
+<!ELEMENT trustedstore (location, password)>
+
+<!-- standalone element specifies if the this container is the node of the
+     cluster. If value is true, then it's not in cluster, false otherwise.
+     Other values not allowed -->
+<!ELEMENT standalone (#PCDATA)>
+
+<!-- This element specifies protocol adapter to use, by default its value
+     is com.azoft.nusuth.container.http.HttpProtocolAdapter. Currently no more
+     adapters are available -->
+<!ELEMENT protocol-adapter (#PCDATA)>
+
+<!-- admin-ip is the comma delimited list of ips that can shut down container.
+     By default only localhost can shut down container -->
+<!ELEMENT admin-ip (#PCDATA)>
+
+<!-- jsp specifies parameters for jsp processor -->
+<!ELEMENT jsp (refresh, compiler)>
+
+<!-- refresh specifies the minimum time for jsp to be checked for modification.
+     if it is 0, than will be no checking, if this parameter is negative, then
+     check will be done for every request to this jsp. You can specify suffixes
+     s, m and h for seconds, minutes and hours respectively. If no suffix is
+     specified, than number treated as seconds -->
+<!ELEMENT refresh (#PCDATA)>
+
+<!-- compiler specifies which compiler use to compile jsp. Currently two values
+     can be specified: javac or jikes -->
+<!ELEMENT compiler (#PCDATA)>
+
+<!-- work-dir element specifies the directory for internal usage, for example
+     this is where jsp generated and compiled classes located. If not specified,
+     $JBIRD_HOME/work assumed -->
+<!ELEMENT work-dir (#PCDATA)>
+
+<!-- defines logging settings -->
+<!ELEMENT logger (level, location?, config?)>
+
+<!-- specifies logging level. There are four levels are available:
+     DEBUG, INFO, WARN and ERROR -->
+<!ELEMENT level (#PCDATA)>
+
+<!-- for logger it specifies directory where log files located. for web
+     applications specifies location of web application in file system, absolute
+     or relative to doc-base.  -->
+<!ELEMENT location (#PCDATA)>
+
+<!-- Specifies alternative config file location for logging system.
+     We are using log4j logging component. Please refer to www.log4j.org for
+     more information -->
+<!ELEMENT config (#PCDATA)>
+
+<!-- specifies location of default config for web applications. If not
+     specified, $JBIRD_HOME/admin/web.xml assumed -->
+<!ELEMENT default-web-config (#PCDATA)>
+
+<!-- specifies setting for container management system -->
+<!ELEMENT manager (port, auth-key)>
+
+<!-- authentification key for JIDEP protocol. Must be the same for all nodes in
+     cluster -->
+<!ELEMENT auth-key (#PCDATA)>
+
+<!-- specifies directory where war files located-->
+<!ELEMENT war-repository (#PCDATA)>
+
+<!-- specifies list of wars which container will deploy on start-->
+<!ELEMENT deploy-list (deploy-item*)>
+
+<!-- specifies concrete war which container will deploy on start-->
+<!ELEMENT deploy-item (war-name, host-id)>
+
+<!-- specifies war file name-->
+<!ELEMENT war-name (#PCDATA)>
+
+<!-- specifies host id on that application will be deployed-->
+<!ELEMENT host-id (#PCDATA)>
+
+<!-- defines virtual host in server -->
+<!ELEMENT host (id, doc-base, session-backup?, autoload?, access-log?,
+		context*)>
+
+<!-- Identifier of virtual host, for example, www.myhost.com. Use * for default
+     host -->
+<!ELEMENT id (#PCDATA)>
+
+<!-- doc-base element specifies the server root, where web applications are
+     located -->
+<!ELEMENT doc-base (#PCDATA)>
+
+<!-- specifies the level of session failover mechanism for stand-alone
+     container. It can accept following values: "never" (never store sessions
+     on disk) - this this default setting, "always" (store session to disk
+     after each request that modifies session), or "shutdown" (store all
+     sessions only on container shutdown). -->
+<!ELEMENT session-backup (#PCDATA)>
+
+<!-- autoload specifies whether or not to load all found web applications that
+     located in directory specified by doc-base element. The path in web-server
+     is the path of directory in doc-base, or name of war file -->
+<!ELEMENT autoload (#PCDATA)>
+
+<!-- defines settings for logging access to server. Element location here
+     specifies the directory were access log will be located-->
+<!ELEMENT access-log (location?, type?, resolve?)>
+
+<!-- defines type of logging. There are three types available: "none" - no
+     access logs, "common" - standart access log format used by web servers, and
+     "extended" - includes additional information about clients -->
+<!ELEMENT type (#PCDATA)>
+
+<!-- defines whether or not try to resolve client IP. If true, then logger will
+     try to do it, false otherwise. Note that resolving client IPs can cause
+     significant slowdown of engine -->
+<!ELEMENT resolve (#PCDATA)>
+
+<!-- specifies web applications in virtual host -->
+<!ELEMENT context (path, location, protocol?, session-backup?, jsp-precompile?,
+                   destroy-timeout?, auto-reload?, auto-compile?, jndi-link*, jta?, jdbc-link*,
+                   external-rmi-codebase-url?, load-on-startup?)>
+
+<!-- defines whether or not start application when container starts -->
+<!ELEMENT load-on-startup (#PCDATA)>
+
+<!-- specifies path of web application inside web server. Clients can access
+     web application with url like http://www.myhost.com/path -->
+<!ELEMENT path (#PCDATA)>
+
+<!--
+Specifies usage of context auto-reloading feature.
+-->
+<!ELEMENT auto-reload (type, check-time)>
+
+<!-- Type of context auto-reloading. Must be "internal" or "lazy" -->
+<!ELEMENT type (#PCDATA)>
+
+<!-- Specifies checking interval for auto-reload -->
+<!ELEMENT check-time (#PCDATA)>
+
+<!--
+Specifies usage of context auto-compiling feature.
+-->
+<!ELEMENT auto-compile (src-dir?, check-time, compiler?, encoding?)>
+
+<!--
+  Specifies directory of source files relative to application root. 
+  (Default /WEB-INF/classes)
+-->
+<!ELEMENT src-dir (#PCDATA)>
+
+<!-- Specifies encoding to compiler (Default os ISO-8859-1)-->
+<!ELEMENT encoding (#PCDATA)>
+
+<!-- specifies comma delimited list of protocols for application. By default
+     its value is HTTP. Also HTTPS can be specified (alone or in addition to
+     HTTP). -->
+<!ELEMENT protocol (#PCDATA)>
+
+<!-- specifies whether or not to precompile all jsp pages located in web
+     application on startup. Specify true if you want to precompile, false
+     otherwise. Default value is false -->
+<!ELEMENT jsp-precompile (#PCDATA)>
+
+<!-- specifies link to external jndi context (in EJB container for example -->
+<!ELEMENT jndi-link (factory, lookup?, parameter*)>
+
+<!-- specifies external jndi initial context factory class name -->
+<!ELEMENT factory (#PCDATA)>
+
+<!ELEMENT lookup (#PCDATA)>
+
+<!-- specifies parameter that will be passed to initial context factory -->
+<!ELEMENT parameter (name, value)>
+
+<!-- specifies to use or not Java Transaction Api. Can be TRUE of FALSE.
+     Default is FALSE -->
+<!ELEMENT jta (#PCDATA)>
+
+<!-- specifies link to external SQL server -->
+<!ELEMENT jdbc-link (description?, name, url, driver, user?, password?,
+                     login-timeout?, pool-size-limit?, fill-pool?, init-sql?,
+                     transaction-timeout?, isolation-level?)>
+
+<!-- optional description of SQL server -->
+<!ELEMENT description (#PCDATA)>
+  
+<!-- specifies url to connect -->
+<!ELEMENT url (#PCDATA)>
+
+<!-- specifies jdbc driver class name for this jdbc url -->
+<!ELEMENT driver (#PCDATA)>
+
+<!-- specifies user name -->
+<!ELEMENT user (#PCDATA)>
+  
+<!-- specifies timeout on server login -->
+<!ELEMENT login-timeout (#PCDATA)>
+  
+<!-- specifies maximum number of connections in connection pool -->
+<!ELEMENT pool-size-limit (#PCDATA)>
+  
+<!-- specifies to fill or not connection pool on startup.
+     Can be TRUE or FALSE-->
+<!ELEMENT fill-pool (#PCDATA)>
+  
+<!-- specifies script that will be executed on connect-->
+<!ELEMENT init-sql (#PCDATA)>
+  
+<!-- specifies timeout on transaction -->
+<!ELEMENT transaction-timeout (#PCDATA)>
+  
+<!-- specifies transaction isolation level -->
+<!ELEMENT isolation-level (#PCDATA)>
+
+<!-- specifies url to download external code via RMI needed by web application.
+If presented, then RMISecurityManager started and code can be downloaded from
+specified url.
+If presented but empty, then RMISecurityManager started without url and code may
+be downloaded from any url. USE WITH CAUTION!
+If not present, then RMISecirityManager not started and code cannot be
+downloaded via RMI. -->
+<!ELEMENT external-rmi-codebase-url (#PCDATA)>
+
+<!ATTLIST container id ID #IMPLIED>
+<!ATTLIST name id ID #IMPLIED>
+<!ATTLIST tcp-server id ID #IMPLIED>
+<!ATTLIST port id ID #IMPLIED>
+<!ATTLIST queue id ID #IMPLIED>
+<!ATTLIST min-handlers id ID #IMPLIED>
+<!ATTLIST max-handlers id ID #IMPLIED>
+<!ATTLIST max-keepalives id ID #IMPLIED>
+<!ATTLIST so-timeout id ID #IMPLIED>
+<!ATTLIST handler-timeout id ID #IMPLIED>
+<!ATTLIST allow-hosts id ID #IMPLIED>
+<!ATTLIST deny-hosts id ID #IMPLIED>
+<!ATTLIST ssl-server id ID #IMPLIED>
+<!ATTLIST keystore id ID #IMPLIED>
+<!ATTLIST password id ID #IMPLIED>
+<!ATTLIST trustedstore id ID #IMPLIED>
+<!ATTLIST standalone id ID #IMPLIED>
+<!ATTLIST protocol-adapter id ID #IMPLIED>
+<!ATTLIST admin-ip id ID #IMPLIED>
+<!ATTLIST jsp id ID #IMPLIED>
+<!ATTLIST refresh id ID #IMPLIED>
+<!ATTLIST compiler id ID #IMPLIED>
+<!ATTLIST work-dir id ID #IMPLIED>
+<!ATTLIST logger id ID #IMPLIED>
+<!ATTLIST level id ID #IMPLIED>
+<!ATTLIST location id ID #IMPLIED>
+<!ATTLIST config id ID #IMPLIED>
+<!ATTLIST default-web-config id ID #IMPLIED>
+<!ATTLIST manager id ID #IMPLIED>
+<!ATTLIST auth-key id ID #IMPLIED>
+<!ATTLIST host id ID #IMPLIED>
+<!ATTLIST id id ID #IMPLIED>
+<!ATTLIST doc-base id ID #IMPLIED>
+<!ATTLIST session-backup id ID #IMPLIED>
+<!ATTLIST autoload id ID #IMPLIED>
+<!ATTLIST access-log id ID #IMPLIED>
+<!ATTLIST type id ID #IMPLIED>
+<!ATTLIST resolve id ID #IMPLIED>
+<!ATTLIST context id ID #IMPLIED>
+<!ATTLIST load-on-startup id ID #IMPLIED>
+<!ATTLIST path id ID #IMPLIED>
+<!ATTLIST protocol id ID #IMPLIED>
+<!ATTLIST jsp-precompile id ID #IMPLIED>
+<!ATTLIST jndi-link id ID #IMPLIED>
+<!ATTLIST factory id ID #IMPLIED>
+<!ATTLIST lookup id ID #IMPLIED>
+<!ATTLIST parameter id ID #IMPLIED>
+<!ATTLIST value id ID #IMPLIED>
+<!ATTLIST jta id ID #IMPLIED>
+<!ATTLIST jdbc-link id ID #IMPLIED>
+<!ATTLIST description id ID #IMPLIED>
+<!ATTLIST url id ID #IMPLIED>
+<!ATTLIST driver id ID #IMPLIED>
+<!ATTLIST user id ID #IMPLIED>
+<!ATTLIST login-timeout id ID #IMPLIED>
+<!ATTLIST pool-size-limit id ID #IMPLIED>
+<!ATTLIST fill-pool id ID #IMPLIED>
+<!ATTLIST init-sql id ID #IMPLIED>
+<!ATTLIST transaction-timeout id ID #IMPLIED>
+<!ATTLIST isolation-level id ID #IMPLIED>
+<!ATTLIST auto-reload id ID #IMPLIED>
+<!ATTLIST type id ID #IMPLIED>
+<!ATTLIST check-time id ID #IMPLIED>

@@ -1,0 +1,42 @@
+build 55 (02/21/2003)
+  - Added support for sealed packages
+
+build 54 (02/21/2003)
+  - Fixed bug of sharing taglibs between included pages
+  - Fixed bug of sharing encoding between included pages
+
+build 53 (02/20/2003)
+  - Fixed bug in FileServlet (not redirecting to / for context path)
+
+build 52 (02/19/2003)
+  - Fixed bug in BodyContent clear method
+  - Fixed bug of sharing taglibs between included pages
+
+build 51 (02/19/2003)
+  - FileServlet now uses forward instead sendRedirect
+
+build 50 (02/18/2003)
+  - Now catching Throwable instead Exception while processing request
+
+build 49 (02/14/2003)
+  - fixed bug with IllegalArgument Exception when "&" found in post parameter
+    value
+  - fixed bug with ClassCastException after context reloading (now internal
+    reload instantiates new ServletContext)
+
+build 48 (02/13/2003)
+  - fixed NullPointerException in case of defining package in classloader with
+    broken manifest
+
+build 47 (02/12/2003)
+  - fixed absence of url decoding in post parameters
+  - connection pool method getConnection(user, password) now simply calls
+    getConnection without parameters
+
+build 46 (02/10/2003)
+  - fixed bug with broken access log
+  - added "hack" for define package (it's impossible to define package if it
+    was defined by parent class loader)
+
+build 45 (01/29/2003)
+  - fixed bug with wrong access log rollover

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  distributor is the root element -->
+<!ELEMENT distributor (name, connection-factory?, protocol-adapter?, manager, logger,
+      tcp-server, ssl-server?, cache?)>
+
+  <!-- name uses in cluster for identification of distributor, so it MUST be
+  specified when standalone parameter set to false and MUST be unique in
+  cluster nodes -->
+  <!ELEMENT name (#PCDATA)>
+
+  <!ELEMENT auth-key (#PCDATA)>
+
+  <!-- specifies Container Connection Factory -->
+  <!ELEMENT connection-factory (class-name, init-parameter*)>
+    <!-- specifies Container Connection Factory class name.
+    MUST be inherited from com.azoft.nusuth.distributor.connectionfactory.ContainerConnectionFactory
+    MUST be fully qualified (with full package name).
+    com.azoft.nusuth.distributor.connectionfactory.RandomFactory by default. -->
+    <!ELEMENT class-name (#PCDATA)>
+    <!ELEMENT init-parameter (name, value)>
+      <!ELEMENT value (#PCDATA)>
+
+  <!-- This element specifies protocol adapter to use, by default its value
+  is com.azoft.nusuth.distributor.HttpDistributorRequestAdapter. Currently no more
+  adapters are available -->
+  <!ELEMENT protocol-adapter (#PCDATA)>
+
+  <!ELEMENT keystore (location, password)>
+    <!ELEMENT location (#PCDATA)>
+    <!ELEMENT password (#PCDATA)>
+
+  <!-- Specifies to use or not SSL authentication. If not specified, FALSE assumed.
+       If TRUE, trustedstore must be specified.-->
+  <!-- Removed from stand-alone container -->
+  <!ELEMENT is-client-authentication-needed (#PCDATA)>
+
+  <!-- Specifies location and password of Trusted Certificates Store -->
+  <!ELEMENT trustedstore (location, password)>
+
+
+  <!-- defines logging settings -->
+  <!ELEMENT logger (level, location?, config?)>
+
+    <!-- specifies logging level. There are four levels are available:
+    DEBUG, INFO, WARN and ERROR -->
+    <!ELEMENT level (#PCDATA)>
+
+    <!-- Specifies alternative config file location for logging system.
+    We are using log4j logging component. Please refer to www.log4j.org for
+    more information -->
+    <!ELEMENT config (#PCDATA)>
+
+
+
+
+  <!-- specifies configuration of tcp-server -->
+  <!ELEMENT tcp-server (port, queue, min-handlers, max-handlers, max-keepalives,
+  so-timeout, handler-timeout, allow-hosts?, deny-hosts?)>
+
+  <!ELEMENT ssl-server (port, queue, min-handlers, max-handlers, max-keepalives,
+  so-timeout, handler-timeout, allow-hosts?, deny-hosts?, keystore, is-client-authentication-needed?, trustedstore?)>
+
+    <!-- specifies tcp-server port -->
+    <!ELEMENT port (#PCDATA)>
+
+    <!-- positive integer that specifies the length of waiting sockets queue -->
+    <!ELEMENT queue (#PCDATA)>
+
+    <!-- positive integer that specifies the minimum number of threads for
+    client requests processing -->
+    <!ELEMENT min-handlers (#PCDATA)>
+
+    <!-- positive integer that specifies the maximum number of threads for
+    client requests processing -->
+    <!ELEMENT max-handlers (#PCDATA)>
+
+    <!-- positive integer that specifies the maximum of keep-alive requests
+    system can accept -->
+    <!ELEMENT max-keepalives (#PCDATA)>
+
+    <!-- positive integer that specifies socket timeout -->
+    <!ELEMENT so-timeout (#PCDATA)>
+
+    <!-- positive integer that specifies the time to live for handlers
+    which number exceed min-handlers -->
+    <!ELEMENT handler-timeout (#PCDATA)>
+
+    <!-- allow-hosts is the comma delimited list of ips that can request container.
+    By default all hosts allowed -->
+    <!ELEMENT allow-hosts (#PCDATA)>
+
+    <!-- deny-hosts is the comma delimited list of ips that can request container.
+    By default no hosts denied -->
+    <!ELEMENT deny-hosts (#PCDATA)>
+
+  <!ELEMENT manager (port, auth-key, user-name, password, cluster-host*)>
+
+    <!ELEMENT user-name (#PCDATA)>
+    <!ELEMENT password (#PCDATA)>
+    <!-- specifies another host in cluster -->
+    <!ELEMENT cluster-host (host-name, port)>
+    <!-- ip or name of one host -->
+    <!ELEMENT host-name (#PCDATA)>
+
+  <!-- specifies cache parameters. Cache disables if omitted. -->
+  <!ELEMENT cache (location, max-used-memory-size, max-used-disk-size, max-page-size, min-refresh-time)>
+
+    <!-- specifies in bytes maximum size of cache memory -->
+    <!ELEMENT max-used-memory-size (#PCDATA)>
+    <!-- specifies in bytes maximum size of cache disk memory -->
+    <!ELEMENT max-used-disk-size (#PCDATA)>
+    <!-- specifies im bytes maximum size of cached page -->
+    <!ELEMENT max-page-size (#PCDATA)>
+    <!-- specifies in time format minimum period between page refreshes. -->
+    <!ELEMENT min-refresh-time (#PCDATA)>
+
+
+<!ATTLIST distributor id ID #IMPLIED>
+<!ATTLIST name id ID #IMPLIED>
+<!ATTLIST id id ID #IMPLIED>
+<!ATTLIST port id ID #IMPLIED>
+<!ATTLIST standalone id ID #IMPLIED>
+<!ATTLIST adminPort id ID #IMPLIED>
+<!ATTLIST admin-ip id ID #IMPLIED>
+<!ATTLIST tcp-server id ID #IMPLIED>
+<!ATTLIST queue id ID #IMPLIED>
+<!ATTLIST min-handlers id ID #IMPLIED>
+<!ATTLIST max-handlers id ID #IMPLIED>
+<!ATTLIST max-keepalives id ID #IMPLIED>
+<!ATTLIST so-timeout id ID #IMPLIED>
+<!ATTLIST handler-timeout id ID #IMPLIED>
+<!ATTLIST allow-hosts id ID #IMPLIED>
+<!ATTLIST deny-hosts id ID #IMPLIED>
+<!ATTLIST logger id ID #IMPLIED>
+<!ATTLIST level id ID #IMPLIED>
+<!ATTLIST location id ID #IMPLIED>
+<!ATTLIST config id ID #IMPLIED>
+<!ATTLIST application id ID #IMPLIED>
+<!ATTLIST url id ID #IMPLIED>
+<!ATTLIST connection-factory id ID #IMPLIED>
+<!ATTLIST container id ID #IMPLIED>
+<!ATTLIST container-host id ID #IMPLIED>
+<!ATTLIST keystore id ID #IMPLIED>
+<!ATTLIST password id ID #IMPLIED>
+<!ATTLIST protocol-adapter id ID #IMPLIED>
+<!ATTLIST class-name id ID #IMPLIED>
+<!ATTLIST init-parameter id ID #IMPLIED>
+<!ATTLIST value id ID #IMPLIED>
+

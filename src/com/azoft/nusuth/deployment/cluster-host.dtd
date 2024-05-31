@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--  cluster-host is the root element -->
+<!ELEMENT cluster-host (autoload?, access-log?)>
+
+  <!-- autoload specifies whether or not to load web applications that
+       found locally to all cluster containers -->
+  <!ELEMENT autoload (#PCDATA)>
+
+  <!-- defines settings for logging access to server. Element location here
+       specifies the directory were access log will be located-->
+  <!ELEMENT access-log (location?, type?, resolve?)>
+
+    <!-- specifies directory where log files located relative to jbird-home -->
+    <!ELEMENT location (#PCDATA)>
+
+    <!-- defines type of logging. There are three types available: "none" - no
+         access logs, "common" - standart access log format used by web servers,
+         and "extended" - includes additional information about clients -->
+    <!ELEMENT type (#PCDATA)>
+
+    <!-- defines whether or not try to resolve client IP. If true, then logger
+         will try to do it, false otherwise. Note that resolving client IPs can
+         cause significant slowdown of engine -->
+    <!ELEMENT resolve (#PCDATA)>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE container SYSTEM "container.dtd">
+<container>                       
+
+  <tcp-server>
+    <port></port>
+    <queue></queue>
+    <min-handlers></min-handlers>
+    <max-handlers></max-handlers>
+    <max-keepalives></max-keepalives>
+    <so-timeout></so-timeout>
+    <handler-timeout></handler-timeout>
+  </tcp-server>
+      
+  <standalone></standalone>
+
+  <logger>
+    <level></level>
+  </logger>
+
+</container>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!ELEMENT jbird-web-app-config (serial-number, protocol?, jsp-precompile?,
+                                destroy-timeout?, jndi-link*, jdbc-link*,
+                                external-rmi-codebase-url?)>
+
+<!-- Any string, that identifies version of web-app. -->
+<!ELEMENT serial-number (#PCDATA)>
+
+<!-- specifies comma delimited list of protocols for application. By default
+     its value is HTTP. Also HTTPS can be specified (alone or in addition to
+     HTTP). -->
+<!ELEMENT protocol (#PCDATA)>
+
+<!-- specifies whether or not to precompile all jsp pages located in web
+     application on startup. Specify true if you want to precompile, false
+     otherwise. Default value is false -->
+<!ELEMENT jsp-precompile (#PCDATA)>
+
+<!ELEMENT destroy-timeout (#PCDATA)>
+
+<!-- specifies link to external jndi context (in EJB container for example -->
+<!ELEMENT jndi-link (factory, lookup?, parameter*)>
+
+<!-- specifies external jndi initial context factory class name -->
+<!ELEMENT factory (#PCDATA)>
+
+<!-- specifies where to lookup EJB in the external context -->
+<!ELEMENT lookup (#PCDATA)>
+
+<!-- specifies parameter that will be passed to initial context factory -->
+<!ELEMENT parameter (name, value)>
+
+<!-- specifies link to external SQL server -->
+<!ELEMENT jdbc-link (name, url, driver, user?, password?,
+                     login-timeout?, pool-size-limit?, fill-pool?, init-sql?,
+                     jta?)>
+
+<!-- specifies url to connect -->
+<!ELEMENT url (#PCDATA)>
+
+<!-- specifies jdbc driver class name for this jdbc url -->
+<!ELEMENT driver (#PCDATA)>
+
+<!-- specifies user name -->
+<!ELEMENT user (#PCDATA)>
+
+<!-- specifies password of SQL server user -->
+<!ELEMENT password (#PCDATA)>
+
+<!-- specifies timeout on server login -->
+<!ELEMENT login-timeout (#PCDATA)>
+
+<!-- specifies maximum number of connections in connection pool -->
+<!ELEMENT pool-size-limit (#PCDATA)>
+
+<!-- specifies to fill or not connection pool on startup.
+     Can be TRUE or FALSE-->
+<!ELEMENT fill-pool (#PCDATA)>
+
+<!-- specifies script that will be executed on connect-->
+<!ELEMENT init-sql (#PCDATA)>
+
+<!-- if specified, then JTA will be used
+     and UserTransaction will be accessible -->
+<!ELEMENT jta (transaction-timeout?, isolation-level?)>
+
+<!-- specifies timeout on transaction -->
+<!ELEMENT transaction-timeout (#PCDATA)>
+
+<!-- specifies transaction isolation level -->
+<!ELEMENT isolation-level (#PCDATA)>
+
+<!-- specifies url to download external code via RMI needed by web application.
+If presented, then RMISecurityManager started and code can be downloaded from
+specified url.
+If presented but empty, then RMISecurityManager started without url and code may
+be downloaded from any url. USE WITH CAUTION!
+If not present, then RMISecirityManager not started and code cannot be
+downloaded via RMI. -->
+<!ELEMENT external-rmi-codebase-url (#PCDATA)>
+
+<!ATTLIST jbird-web-app-config      id ID #IMPLIED>
+<!ATTLIST protocol                  id ID #IMPLIED>
+<!ATTLIST jsp-precompile            id ID #IMPLIED>
+<!ATTLIST destroy-timeout           id ID #IMPLIED>
+<!ATTLIST jndi-link                 id ID #IMPLIED>
+<!ATTLIST factory                   id ID #IMPLIED>
+<!ATTLIST lookup                    id ID #IMPLIED>
+<!ATTLIST parameter                 id ID #IMPLIED>
+<!ATTLIST jdbc-link                 id ID #IMPLIED>
+<!ATTLIST url                       id ID #IMPLIED>
+<!ATTLIST driver                    id ID #IMPLIED>
+<!ATTLIST user                      id ID #IMPLIED>
+<!ATTLIST password                  id ID #IMPLIED>
+<!ATTLIST login-timeout             id ID #IMPLIED>
+<!ATTLIST pool-size-limit           id ID #IMPLIED>
+<!ATTLIST fill-pool                 id ID #IMPLIED>
+<!ATTLIST init-sql                  id ID #IMPLIED>
+<!ATTLIST jta                       id ID #IMPLIED>
+<!ATTLIST transaction-timeout       id ID #IMPLIED>
+<!ATTLIST isolation-level           id ID #IMPLIED>
+<!ATTLIST external-rmi-codebase-url id ID #IMPLIED>

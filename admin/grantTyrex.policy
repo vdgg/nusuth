@@ -1,0 +1,7 @@
+grant {
+  permission tyrex.tm.TyrexPermission "server.start", "server.start";
+  permission tyrex.naming.NamingPermission "shared";
+  permission tyrex.naming.NamingPermission "enc";
+  permission tyrex.tm.TyrexPermission "manager";
+};
+

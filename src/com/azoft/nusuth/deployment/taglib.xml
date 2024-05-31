@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE taglib SYSTEM "web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+
+  <tlib-version></tlib-version>
+  <short-name></short-name>
+  <tag>
+    <name></name>
+    <tag-class></tag-class>
+  </tag>
+
+</taglib>

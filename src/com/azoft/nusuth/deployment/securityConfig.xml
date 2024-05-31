@@ -1,0 +1,14 @@
+<!DOCTYPE securityConfig SYSTEM "security.dtd">
+
+<securityConfig>
+
+  <resources>
+  </resources>
+
+  <users>
+  </users>
+
+  <roles>
+  </roles>
+
+</securityConfig>

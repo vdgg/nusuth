@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--  deployer is the root element -->
+<!ELEMENT deployer (name, manager, logger)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT container (name, port)>
+<!ELEMENT port (#PCDATA)>
+<!ELEMENT manager (port, auth-key, user-name, password)>
+<!ELEMENT location (#PCDATA)>
+<!-- defines logging settings -->
+<!ELEMENT logger (level, location?, config?)>
+<!-- specifies logging level. There are four levels are available:
+    DEBUG, INFO, WARN and ERROR -->
+<!ELEMENT level (#PCDATA)>
+<!-- Specifies alternative config file location for logging system.
+    We are using log4j logging component. Please refer to www.log4j.org for
+    more information -->
+<!ELEMENT config (#PCDATA)>
+<!ELEMENT auth-key (#PCDATA)>
+<!ELEMENT user-name (#PCDATA)>
+<!ELEMENT hash-password (#PCDATA)>
+
+<!ATTLIST deployer
+	id ID #IMPLIED
+>
+<!ATTLIST name
+	id ID #IMPLIED
+>
+<!ATTLIST container
+	id ID #IMPLIED
+>
+<!ATTLIST port
+	id ID #IMPLIED
+>
+<!ATTLIST location
+	id ID #IMPLIED
+>
+<!ATTLIST logger
+	id ID #IMPLIED
+>
+<!ATTLIST level
+	id ID #IMPLIED
+>
+<!ATTLIST config
+	id ID #IMPLIED
+>

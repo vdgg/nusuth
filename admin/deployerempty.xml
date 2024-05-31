@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE deployer SYSTEM "../admin/deployer.dtd">
+<deployer>
+   <name/>
+   <manager>
+      <port/>
+      <auth-key/>
+   </manager>
+   <logger>
+      <level/>
+      <location/>
+      <config/>
+   </logger>
+</deployer>

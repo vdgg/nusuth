@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE container SYSTEM "../container.dtd">
+<container>
+
+  <name>first</name>
+
+  <tcp-server>
+    <port>8080</port>
+    <queue>100</queue>
+    <min-handlers>5</min-handlers>
+    <max-handlers>100</max-handlers>
+    <max-keepalives>10</max-keepalives>
+    <so-timeout>1m</so-timeout>
+    <handler-timeout>5m</handler-timeout>
+  </tcp-server>
+
+  <admin-config>
+    <admin-server>
+      <port>8081</port>
+      <queue>100</queue>
+      <min-handlers>1</min-handlers>
+      <max-handlers>10</max-handlers>
+      <max-keepalives>5</max-keepalives>
+      <so-timeout>1m</so-timeout>
+      <handler-timeout>5m</handler-timeout>
+    </admin-server>
+    <admin-context-location>
+      ../webapps/config
+    </admin-context-location>
+  </admin-config>
+
+  <standalone>true</standalone>
+
+  <jsp>
+    <refresh>1s</refresh>
+    <compiler>javac</compiler>
+  </jsp>
+
+  <work-dir>../work</work-dir>
+
+  <logger>
+    <level>DEBUG</level>
+    <location>../logs</location>
+  </logger>
+
+  <host>
+    <id>*</id>
+    <doc-base>../webapps</doc-base>
+    <context>
+      <path>/examples</path>
+      <location>/demo</location>
+    </context>
+  </host>
+
+</container>

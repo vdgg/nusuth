@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app SYSTEM "../admin/web.dtd">
+
+<web-app>
+	<icon></icon>
+	<distributable></distributable>
+	<context-param>
+		<param-name/>
+		<param-value/>
+		<description/>
+	</context-param>
+	<filter>
+		<icon/>
+		<filter-name>filter name</filter-name>
+		<display-name/>
+		<description/>
+		<filter-class>filter class</filter-class>
+		<init-param>
+			<param-name/>
+			<param-value/>
+			<description/>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name/>
+		<url-pattern/>
+	</filter-mapping>
+	<listener>
+	    <listener-class/>
+	</listener>
+	<servlet>
+		<icon/>
+		<servlet-name>servlet name</servlet-name>
+		<display-name/>
+		<description/>
+		<servlet-class>servlet class</servlet-class>
+		<init-param>
+			<param-name/>
+			<param-value/>
+			<description/>
+		</init-param>
+		<load-on-startup/>
+		<security-role-ref>
+			<description/>
+			<role-name/>
+			<role-link/>
+		</security-role-ref>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name/>
+		<url-pattern/>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout/>
+	</session-config>
+	<mime-mapping>
+		<extension/>
+		<mime-type/>
+	</mime-mapping>
+	<welcome-file-list>
+		<welcome-file/>
+	</welcome-file-list>
+	<error-page>
+		<error-code>error-code</error-code>
+		<!--exception-type></exception-type-->
+		<location/>
+	</error-page>
+	<taglib>
+		<taglib-uri/>
+		<taglib-location/>
+	</taglib>
+	<resource-env-ref>
+		<description/>
+		<resource-env-ref-name/>
+		<resource-env-ref-type/>
+	</resource-env-ref>
+	<resource-ref>
+		<description/>
+		<res-ref-name/>
+		<res-type/>
+		<res-auth/>
+	</resource-ref>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name/>
+			<description/>
+			<url-pattern/>
+			<http-method/>
+		</web-resource-collection>
+		<auth-constraint>
+			<description/>
+			<role-name/>
+		</auth-constraint>
+		<user-data-constraint>
+			<description/>
+			<transport-guarantee/>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method/>
+		<realm-name/>
+		<form-login-config>
+			<form-login-page/>
+			<form-error-page/>
+		</form-login-config>
+	</login-config>
+	<security-role>
+		<description/>
+		<role-name/>
+	</security-role>
+	<env-entry>
+		<description/>
+		<env-entry-name/>
+		<env-entry-value/>
+		<env-entry-type/>
+	</env-entry>
+	<ejb-ref>
+		<description/>
+		<ejb-ref-name/>
+		<ejb-ref-type/>
+		<home/>
+		<remote/>
+		<ejb-link/>
+	</ejb-ref>
+</web-app>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE application-deployment SYSTEM "../admin/container.dtd">
+<application-deployment>
+	<host>
+		<id></id>
+		<doc-base></doc-base>
+		<context>
+			<url></url>
+			<protocol></protocol>
+			<is-running></is-running>
+			<container></container>
+			<location></location>
+		</context>
+	</host>
+</application-deployment>

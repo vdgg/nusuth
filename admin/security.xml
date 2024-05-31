@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE securityConfig SYSTEM "security.dtd ">
+<securityConfig>
+	<resources>
+		<distributors>
+			<distributor>
+				<name>first dist</name>
+			</distributor>
+		</distributors>
+		<containers>
+			<container>
+				<name>first cont</name>
+			</container>
+			<container>
+				<name>second cont</name>
+			</container>
+		</containers>
+		<deployers>
+			<deployer>
+				<name>first depl</name>
+				<right>
+					<group-name>guests</group-name>
+					<permission>see config</permission>
+				</right>
+			</deployer>
+		</deployers>
+		<web-apps>
+			<web-app>
+				<name>jazz</name>
+				<right>
+					<group-name>admins</group-name>
+					<permission>*</permission>
+				</right>
+			</web-app>
+		</web-apps>
+		<right>
+			<group-name>users</group-name>
+			<permission>see</permission>
+		</right>
+		<right>
+			<group-name>admins</group-name>
+			<permission>*</permission>
+		</right>
+	</resources>
+	<users>
+		<group>
+			<name>guests</name>
+		</group>
+		<group>
+			<name>users</name>
+		</group>
+		<group>
+			<name>admins</name>
+			<parent-group>users</parent-group>
+		</group>
+		<user>
+			<name>igork</name>
+			<password>123</password>
+			<parent-group>admins</parent-group>
+			<parent-group>guests</parent-group>
+		</user>
+		<user>
+			<name>test</name>
+			<password>test</password>
+			<parent-group>users</parent-group>
+		</user>
+		<user>
+			<name>guest</name>
+			<password>guest</password>
+			<parent-group>guests</parent-group>
+		</user>
+	</users>
+</securityConfig>

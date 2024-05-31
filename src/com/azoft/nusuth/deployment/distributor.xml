@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE distributor SYSTEM "distributor.dtd">
+
+<distributor>
+
+  <name></name>
+  <manager>
+    <auth-key></auth-key>
+    <port></port>
+  </manager>
+  <logger>
+    <level></level>
+  </logger>
+  <tcp-server>
+    <port></port>
+    <queue></queue>
+    <min-handlers></min-handlers>
+    <max-handlers></max-handlers>
+    <max-keepalives></max-keepalives>
+    <so-timeout></so-timeout>
+    <handler-timeout></handler-timeout>
+  </tcp-server>
+
+</distributor>

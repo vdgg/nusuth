@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--tree is the root element-->
+<!ELEMENT securityConfig (resources, users, roles)>
+
+<!--declares all the resources-->
+<!ELEMENT resources   (resource*)>
+<!--declares the particular resource-->
+<!ELEMENT resource    (name, owner-role, permissions*)>
+<!--declares the permissions for the particular resource-->
+<!ELEMENT permissions (role, permission)>
+<!--declares all users-->
+<!ELEMENT users (user*)>
+<!--declares particular user-->
+<!ELEMENT user  (name, password, role*)>
+<!--declares all roles-->
+<!ELEMENT roles (role*)>
+<!--user name-->
+<!ELEMENT name       (#PCDATA)>
+<!--user password-->
+<!ELEMENT password   (#PCDATA)>
+<!--permission for the given role (must be "read" or "write")-->
+<!ELEMENT permission (#PCDATA)>
+<!--role name of user-->
+<!ELEMENT role       (#PCDATA)>
+<!--indicates acl owner role-->
+<!ELEMENT owner-role       (#PCDATA)>
+
+
+
+

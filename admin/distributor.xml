@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE distributor SYSTEM "distributor.dtd">
+
+<distributor>
+
+  <name>first distr</name>
+
+  <protocol-adapter>com.azoft.nusuth.distributor.HttpDistributorRequestAdapter</protocol-adapter>
+
+  <manager>
+    <auth-key>1234567890</auth-key>
+    <port>9101</port>
+  </manager>
+
+  <logger>
+    <level>DEBUG</level>
+  </logger>
+
+  <tcp-server>
+    <port>8080</port>
+    <queue>101</queue>
+    <min-handlers>10</min-handlers>
+    <max-handlers>150</max-handlers>
+    <max-keepalives>50</max-keepalives>
+    <so-timeout>1m</so-timeout>
+    <handler-timeout>1m</handler-timeout>
+  </tcp-server>
+
+  <container-info>
+    <name>first</name>
+    <container-host>localhost</container-host>
+    <port>8081</port>
+    <admin-port>9201</admin-port>
+  </container-info>
+
+  <container-info>
+    <name>second</name>
+    <container-host>localhost</container-host>
+    <port>8082</port>
+    <admin-port>9202</admin-port>
+  </container-info>
+
+  <host>
+    <id>*</id>
+    <context>
+      <url>/jazz</url>
+      <protocol>http</protocol>
+      <container>second</container>
+      <container>first</container>
+    </context>
+    <context>
+      <url>/</url>
+      <protocol>http</protocol>
+      <container>second</container>
+      <container>first</container>
+    </context>
+  </host>
+
+</distributor>
